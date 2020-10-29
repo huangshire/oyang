@@ -1,0 +1,4 @@
+2019.4.11 修改版本为：main_menu_encryption.exe
+目录scan_point_20190411\dist\dist_encryption
+修改菜单的循环方式
+加密处理auto_run.txt

@@ -1,0 +1,17 @@
+szSql.Format((_bstr_t)("SET NOCOUNT ON DECLARE @sql1 nvarchar(1000),@sql2 nvarchar(1000),@nh VARCHAR(100),@bh VARCHAR(100),@dd VARCHAR(100),@bmh VARCHAR(100),@bmh1 VARCHAR(100),@bhsx VARCHAR(100),@xjsj VARCHAR(100),@table VARCHAR(50),@dwmc VARCHAR(50),@dflag VARCHAR(50),@bj VARCHAR(50),@khzt VARCHAR(50),@xjys VARCHAR(50),@ry VARCHAR(50)\
+			SET @nh='%s'\
+			SET @xjsj='%s'\
+			SET @bh='%s'\
+			SET @dflag='1'\
+			SET @bj='正式上传'\
+			SET @khzt='准时'\
+			SET @xjys='%s'\
+			SET @ry=''\
+			SELECT @dd=address_name, @bmh=bmh FROM[address] WHERE address_cardID = @nh\
+			SELECT @bhsx=bhsx, @bmh1=bmh FROM[lwbhsz] WHERE bh = @bh\
+			select @dwmc=LEFT(@bmh,4)\
+			select @table=dwmc from[lwbm] where bmh = @dwmc\
+			set @sql1='INSERT INTO [' + @table+'_lwmain] (nh,dd,xjsj,bh,bhsx,bmh,dflag,bj) values(@nh,@dd,@xjsj,@bh,@bhsx, @bmh,@dflag,@bj)'\
+			exec sp_executesql @sql1,N'@nh VARCHAR(50),@dd VARCHAR(50),@xjsj VARCHAR(50),@bh VARCHAR(50),@bhsx VARCHAR(50), @bmh VARCHAR(50),@dflag VARCHAR(50),@bj VARCHAR(50)', @nh,@dd,@xjsj,@bh,@bhsx, @bmh,@dflag,@bj\
+			set @sql2='UPDATE [' + @table+'_lwjhkh] SET ry = @ry, khzt = @khzt, xjsj =@xjsj,bhsx = @bhsx,bh = @bh,xjys = @xjys WHERE  dd =@dd AND @xjsj1>kssj AND @xjsj2<jssj'\
+			exec sp_executesql @sql2,N'@ry VARCHAR(50),@khzt VARCHAR(50),@xjsj VARCHAR(50),@bhsx VARCHAR(50),@bh VARCHAR(50), @xjys VARCHAR(50),@dd VARCHAR(50),@xjsj1 VARCHAR(50),@xjsj2 VARCHAR(50)', @ry,@khzt,@xjsj,@bhsx,@bh, @xjys,@dd,@xjsj,@xjsj"), strId, strTime, strNum, strTys);

@@ -1,5 +1,5 @@
 import requests
-
+#author ByCow.Oyang
 def get_website_data(url):
     response=requests.get(url,timeout=5)
     return response

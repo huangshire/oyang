@@ -1,0 +1,1 @@
+start cmd /k "python main_menu.py jubingxi 0"
